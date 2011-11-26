@@ -19,19 +19,18 @@ def login(request):
     password = ''
     is_admin = False
     if 'form.submitted' in request.params:
-        email = request.params['email']
+        email = request.params['email'].lower()
         password = request.params['password']
         hashpass = hashlib.sha224(str(password)).hexdigest()
         dbuser = DBSession.query(Person).filter(Person.email==email).first()
+        
         if dbuser and dbuser.password == hashpass:
             print email+" successfully logged in on "+str(datetime.datetime.now())
-            headers = remember(request, email)
+            headers = remember(request, dbuser.id)
             return HTTPFound(location = came_from,
                              headers = headers)
-        else:
-            print "Failed login attempt by "+email+" on "+str(datetime.datetime.now())
-            print "db = "+dbuser.password
-            print "given = "+hashpass
+
+        print "Failed login attempt by "+email+" on "+str(datetime.datetime.now())
         message = 'Sorry, that login doesn\'t seem to work.  Try again?'
 
     return dict(

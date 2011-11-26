@@ -1,24 +1,22 @@
 <metal:main use-macro="load: base.pt">
-<title metal:fill-slot="title">${person.name} - Wishlist</title>
-<h2 metal:fill-slot="page-header">&nbsp;</h2>
+<title metal:fill-slot="title">${current_user.name} - Wishlist</title>
+<h2 metal:fill-slot="page-header">${current_user.name}'s List</h2>
 <div metal:fill-slot="content" class="container_12">
-    <span class="grid_8 name">${person.name}'s List</span>
-    <span class="person-actions grid_4">
-        <a href="${request.route_url('profile', id=person.id)}">
+    <span class="person-actions grid_12">
+        <a href="${request.route_url('profile', id=current_user.id)}">
             <img src="${request.static_url('wish2:static/user.png')}" alt="Profile" title="Profile" />
             Profile
         </a>
-        <span style="width:20px;">&nbsp;</span>
         <a href="${request.route_url('add')}">
             <img src="${request.static_url('wish2:static/add.png')}" alt="Add" title="Add Item" />
             Add Item
         </a>
     </span>
     <div class="clear">&nbsp;</div>
-    <div class="items" tal:condition="not person.items">
+    <div class="items" tal:condition="not current_user.items">
     <div class="item grid_12"><div><div style="margin-left:20px">Nothing here!</div></div></div>
     </div>
-    <ul class="items" tal:condition="person.items">
+    <ul class="items" tal:condition="current_user.items">
       <li tal:repeat="item person.items" class="item container_12">
         <div tal:condition="not item.deleted">
         <span class="actions grid_1">

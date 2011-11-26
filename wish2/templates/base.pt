@@ -13,10 +13,13 @@
     <h1 class="grid_12">Wishlist</h1>
 </div>
 <div class="container_12 navbar">
-    <div class="grid_6">
+    <div class="grid_4">
          <metal:content define-slot="page-header">
     </div>
-    <div class="grid_6 controls">
+    <div class="grid_8 controls" tal:condition="logged_in">
+        <span tal:condition="logged_in">
+            Logged in as ${current_user.name}
+        </span>
         <span>
             <a href="${request.application_url}/">Everything</a>
         </span>
@@ -29,7 +32,6 @@
         <span tal:condition="logged_in">
            <a href="${request.application_url}/logout">Logout</a>
         </span>
-        <br tal:condition="is_admin" />
         <span tal:condition="is_admin">
             <a href="${request.application_url}/create_user">Create User</a>
         </span>

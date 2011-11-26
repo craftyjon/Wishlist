@@ -1,9 +1,8 @@
 <metal:main use-macro="load: base.pt">
 <title metal:fill-slot="title">${person.name} - Wishlist</title>
-<h2 metal:fill-slot="page-header">&nbsp;</h2>
+<h2 metal:fill-slot="page-header">${person.name}'s List</h2>
 <div metal:fill-slot="content" class="container_12">
-    <span class="grid_8 name">${person.name}'s List</span>
-    <span class="person-actions grid_4">
+    <span class="person-actions grid_12">
         <a href="${request.route_url('profile', id=person.id)}">
             <img src="${request.static_url('wish2:static/user.png')}" alt="Profile" title="Profile" />
             Profile

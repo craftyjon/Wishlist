@@ -10,19 +10,25 @@ def wish_render(request, response_dict):
     logged_in = authenticated_userid(request)
     dbsession = DBSession()
     is_admin = False
+    current_user = None
     if logged_in:
-        is_admin = DBSession.query(Person).filter(Person.email==logged_in).first().is_admin
+        current_user = DBSession.query(Person).filter(Person.id==logged_in).first()
+        if current_user:
+            is_admin = current_user.is_admin
         
+    response_dict['current_user'] = current_user
     response_dict['logged_in'] = logged_in
     response_dict['is_admin'] = is_admin
     return response_dict
 
 def all_items(request):
-    people = DBSession.query(Person).filter(Person.active==True)
+    my_id = authenticated_userid(request)
+    people = DBSession.query(Person).filter(Person.active==True).filter(Person.id!=my_id)
     return wish_render(request, {'people':people})
     
 def people(request):
-    people = DBSession.query(Person).filter(Person.active==True)
+    my_id = authenticated_userid(request)
+    people = DBSession.query(Person).filter(Person.active==True).filter(Person.id!=my_id)
     return wish_render(request, {'people':people})
     
 def list(request):
@@ -33,8 +39,8 @@ def list(request):
     return wish_render(request, {'person':person})
     
 def my_list(request):
-    email = authenticated_userid(request)
-    person = DBSession.query(Person).filter(Person.email==email).first()
+    id = authenticated_userid(request)
+    person = DBSession.query(Person).filter(Person.id==id).first()
     return wish_render(request, {'person':person})
     
 def profile(request):
@@ -43,9 +49,9 @@ def profile(request):
     return wish_render(request, {'person':person})
     
 def edit_profile(request):
-    email = authenticated_userid(request)
+    id = authenticated_userid(request)
     if 'form.submitted' in request.params:
-        person = DBSession.query(Person).filter(Person.email==email).one()
+        person = DBSession.query(Person).filter(Person.id==id).one()
         person.name = request.params['name']
         person.email = request.params['email']
         if 'password' in request.params and request.params['password'] != "":
@@ -54,7 +60,7 @@ def edit_profile(request):
         DBSession.add(person)
         return HTTPFound(location = request.route_url('edit_users'))
     save_url = request.route_url('edit_profile')
-    person = DBSession.query(Person).filter(Person.email==email).first()
+    person = DBSession.query(Person).filter(Person.id==id).first()
     return wish_render(request, dict(person=person, save_url=save_url))
 
 def create_user(request):
@@ -111,8 +117,7 @@ def mark(request):
     return wish_render(request, dict(item=item, save_url=save_url))
     
 def add(request):
-    owner_email = authenticated_userid(request)
-    owner_id = DBSession.query(Person).filter(Person.email==owner_email).one().id
+    owner_id = authenticated_userid(request)
     if 'form.submitted' in request.params:
         session = DBSession()
         title = request.params['title']
@@ -127,8 +132,7 @@ def add(request):
     
 def edit(request):
     id = request.matchdict['id']
-    owner_email = authenticated_userid(request)
-    owner_id = DBSession.query(Person).filter(Person.email==owner_email).one().id
+    owner_id = authenticated_userid(request)
     if 'form.submitted' in request.params:
         item = DBSession.query(Item).filter(Item.id==id).one()
         if 'delete' in request.params and request.params['delete']=="yes":
