@@ -255,12 +255,24 @@ table {
     }
     
     table {
-        background-color: rgba(0,0,0,.15);
+        background-color: rgba(0,0,0,.1);
         border-radius: 15px;
+        display: inline-block;
+        padding: 10px;
     }
     
+    tr {
+        margin: 0 10px;
+        background: rgba(0,0,0,.1);
+    }
+    
+    tr:nth-child(even) {
+        background: rgba(0,0,0,.2);
+    }    
+    
     td {
-        padding: 10px;
+        display: table-cell;
+        padding: 10px 20px;
         vertical-align: middle;
     }
     

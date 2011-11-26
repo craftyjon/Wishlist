@@ -3,8 +3,7 @@
 <h2 metal:fill-slot="page-header">${person.name}</h2>
 <div metal:fill-slot="content" class="container_12">
 <div tal:condition="person">
-    <div class="grid_2">&nbsp;</div>
-    <div class="grid_8">
+    <div class="grid_10">
         <table>
             <tr>
                 <td>Email:</td>
@@ -16,7 +15,8 @@
             </tr>
             <tr tal:condition="person.items">
                 <td>Wishlist Items:</td>
-                <td><a href="${request.route_url('list', id=person.id)}">Click to view</a></td>
+                <td tal:condition="person.id != logged_in"><a href="${request.route_url('list', id=person.id)}">${len(person.items)} in list, ${str(len(filter(lambda x: x.marked==True, person.items)))} marked</a></td>
+                <td tal:condition="person.id == logged_in"><a href="${request.route_url('list', id=person.id)}">${len(person.items)} in list</a></td>
             </tr>
         </table>
     </div>

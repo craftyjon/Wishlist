@@ -5,7 +5,7 @@
 <ul tal:condition="people">
     <li tal:repeat="person people" class="person">
         <div>
-        <span class="grid_8 name"><a href="${request.route_url('list', id=person.id)}">${person.name}</a></span>
+        <span class="grid_8 name"><a href="${request.route_url('list', id=person.id)}">${person.name}</a> - ${len(person.items)} item(s)</span>
         <span class="person-actions grid_4">
             <a href="${request.route_url('list', id=person.id)}">
                 <img src="${request.static_url('wish2:static/script.png')}" alt="Items" title="All Items" />
