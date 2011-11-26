@@ -1,0 +1,38 @@
+<metal:main use-macro="load: base.pt">
+<title metal:fill-slot="title">${person.name} - Wishlist</title>
+<h2 metal:fill-slot="page-header">&nbsp;</h2>
+<div metal:fill-slot="content" class="container_12">
+    <span class="grid_8 name">${person.name}'s List</span>
+    <span class="person-actions grid_4">
+        <a href="${request.route_url('profile', id=person.id)}">
+            <img src="${request.static_url('wish2:static/user.png')}" alt="Profile" title="Profile" />
+            Profile
+        </a>
+    </span>
+    <div class="clear">&nbsp;</div>
+    <div class="items" tal:condition="not person.items">
+    <div class="item grid_12"><div><div style="margin-left:20px">Nothing here!</div></div></div>
+    </div>
+    <ul class="items" tal:condition="person.items">
+      <li tal:repeat="item person.items" class="item container_12">
+        <div tal:condition="not item.deleted">
+        <span tal:condition="item.owner.email != logged_in" class="actions grid_1">
+          <a tal:condition="item.marked==0" href="${request.route_url('mark', id=item.id)}">
+              <img src="${request.static_url('wish2:static/big_check_green.png')}" alt="Mark" title="Mark This Item" />
+          </a>
+          <a tal:condition="item.marked!=0 and item.multiple==True" href="${request.route_url('mark', id=item.id)}">
+              <img src="${request.static_url('wish2:static/big_check_blue.png')}" alt="Mark Again" title="Mark This Item Again" />
+          </a>
+          <span tal:condition="item.marked!=0 and item.multiple==False">
+              <img src="${request.static_url('wish2:static/big_knob_grey.png')}" alt="Marked" title="Item Already Marked" />
+          </span>
+        </span>
+        <span class="title grid_11">
+            <a href="${request.route_url('view', id=item.id)}">${item.title}</a>
+        </span>
+        <span class="clear">&nbsp;</span>
+        </div>
+      </li>
+    </ul>
+</div>
+</metal:main>

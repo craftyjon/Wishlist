@@ -1,0 +1,27 @@
+<metal:main use-macro="load: base.pt">
+<title metal:fill-slot="title">Add Item - Wishlist</title>
+<h2 metal:fill-slot="page-header">Add Item</h2>
+<div metal:fill-slot="content" class="container_12">
+    <div class="clear">&nbsp;</div>
+    <div class="form-container grid_12">
+        <form action="${save_url}" method="post">
+            <table>
+            <tr>
+                <td>Title:</td>
+                <td><input type="text" name="title" size="40" value="${item.title}"/></td>
+            </tr>
+            <tr>
+                <td>URL (optional):</td>
+                <td><input type="text" name="url" size="40" value="${item.url}"/></td>
+            <tr>
+                <td>Description:</td>
+                <td><textarea name="description" rows="10" cols="60">${item.description}</textarea></td>
+            <tr>
+                <td>&nbsp;</td>
+                <td><input type="submit" name="form.submitted" value="Create"/></td>
+            </tr>
+            </table>
+        </form>
+    </div>
+</div>
+</metal:main>

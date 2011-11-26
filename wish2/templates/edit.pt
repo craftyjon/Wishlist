@@ -1,0 +1,36 @@
+<metal:main use-macro="load: base.pt">
+<title metal:fill-slot="title">Edit Item - Wishlist</title>
+<h2 metal:fill-slot="page-header">Edit Item</h2>
+<div metal:fill-slot="content" class="container_12">
+    <div class="clear">&nbsp;</div>
+    <div class="form-container grid_12">
+        <form action="${save_url}" method="post">
+            <table>
+            <tr>
+                <td>Title:</td>
+                <td><input type="text" name="title" size="40" value="${item.title}"/></td>
+            </tr>
+            <tr>
+                <td>URL (optional):</td>
+                <td><input type="text" name="url" size="40" value="${item.url}"/></td>
+            <tr>
+                <td>Description:</td>
+                <td><textarea name="description" rows="10" cols="60">${item.description}</textarea></td>
+            </tr>
+            <tr>
+                <td>Delete?</td>
+                <td>
+                    <img src="${request.static_url('wish2:static/delete.png')}" alt="Delete" title="Delete Item" />
+                    <input type="checkbox" name="delete" value="yes" id="cb_delete" />
+                    <label for="cb_delete">Check to delete this item</label>
+                </td>
+            </tr>
+            <tr>
+                <td>&nbsp;</td>
+                <td><input type="submit" name="form.submitted" value="Save"/></td>
+            </tr>
+            </table>
+        </form>
+    </div>
+</div>
+</metal:main>

@@ -1,0 +1,51 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" xmlns:tal="http://xml.zope.org/namespaces/tal">
+<head>
+  <title metal:define-slot="title">Page Title</title>
+  <meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/>
+  <link rel="shortcut icon" href="${request.static_url('wish2:static/script.png')}" />
+  <link rel="stylesheet" href="${request.static_url('wish2:static/1140.css')}" type="text/css" media="screen" />
+  <link rel="stylesheet" href="${request.static_url('wish2:static/style.css')}" type="text/css" media="screen" charset="utf-8" />
+  <script type="text/javascript" src="${request.static_url('wish2:static/css3-mediaqueries.js')}"></script>
+</head>
+<body>
+<div class="container_12 header">
+    <h1 class="grid_12">Wishlist</h1>
+</div>
+<div class="container_12 navbar">
+    <div class="grid_6">
+         <metal:content define-slot="page-header">
+    </div>
+    <div class="grid_6 controls">
+        <span>
+            <a href="${request.application_url}/">Everything</a>
+        </span>
+        <span>
+            <a href="${request.application_url}/people">People</a>
+        </span>
+        <span>
+            <a href="${request.application_url}/list/my">My List</a>
+        </span>
+        <span tal:condition="logged_in">
+           <a href="${request.application_url}/logout">Logout</a>
+        </span>
+        <br tal:condition="is_admin" />
+        <span tal:condition="is_admin">
+            <a href="${request.application_url}/create_user">Create User</a>
+        </span>
+        <span tal:condition="is_admin">
+            <a href="${request.application_url}/edit_users">Edit Users</a>
+        </span>
+    </div>
+    <div class="clear">&nbsp;</div>
+</div>
+<metal:content define-slot="content"> 
+<div class="container_12 footer">
+    <div class="grid_12">
+    <p>Wishlist v2.0 - 2011-11-24</p>
+    <p>Bugs? Comments? <a href="mailto:jon@craftyjon.com">jon@craftyjon.com</a></p>
+    </div>
+</div>
+</body>
+</html>
+

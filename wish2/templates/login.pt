@@ -1,0 +1,30 @@
+<metal:main use-macro="load: base.pt">
+<title metal:fill-slot="title">Login - Wishlist</title>
+<div metal:fill-slot="content">
+<div class="container_12">
+    <div class="grid_12">
+    <h2>Login</h2>
+    <div class="message grid_7" tal:condition="message">${message}</div>
+    <div class="form-container">
+        <form action="${url}" method="post">
+        <input type="hidden" name="came_from" value="${came_from}" />
+        <table class="grid_8">
+        <tr>
+        <td>Email:</td>
+        <td><input type="email" name="email" value="${email}"/></td>
+        </tr>
+        <tr>
+        <td>Password:</td>
+        <td><input type="password" name="password" value="${password}"/></td>
+        </tr>
+        <tr>
+        <td>&nbsp;</td>
+        <td><input type="submit" name="form.submitted" value="Log In"/></td>
+        </tr>
+        </table>
+        </form>
+    </div>
+    </div>
+</div>
+</div>
+</metal:main>

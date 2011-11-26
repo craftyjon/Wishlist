@@ -1,0 +1,42 @@
+<metal:main use-macro="load: base.pt">
+<title metal:fill-slot="title">${item.title} - Wishlist</title>
+<h2 metal:fill-slot="page-header">${item.owner.name}'s List</h2>
+<div metal:fill-slot="content" class="container_12">
+<div class="grid_2">&nbsp;</div>
+<table class="grid_8">
+    <tr>
+        <td>Title:</td>
+        <td>${item.title}</td>
+    </tr>
+    <tr tal:condition="item.owner.email==logged_in">
+        <td>&nbsp;</td>
+        <td><a href="${request.route_url('edit',id=item.id)}">
+        <img src="${request.static_url('wish2:static/pencil.png')}" title="Edit This Item" />
+        Edit</a></td>
+    </tr>
+    <tr tal:condition="item.owner.email!=logged_in">
+        <td>&nbsp;</td>
+        <td tal:condition="not item.marked"><a href="${request.route_url('mark',id=item.id)}">
+        <img src="${request.static_url('wish2:static/accept.png')}" title="Mark This Item" />
+        Mark This Item</a>
+        </td>
+        <td tal:condition="item.marked">
+        <em>Item already marked</em>
+        </td>
+    </tr>
+    <tr tal:condition="item.url">
+        <td>URL:</td>
+        <td><a href="${item.url}"><img src="${request.static_url('wish2:static/link.png')}" /> ${item.url}</a><td>
+    </tr>
+    <tr tal:condition="item.multiple">
+        <td>&nbsp;</td>
+        <td>(I'm ok with more than one of this item)</td>
+    </tr>
+    <tr>
+        <td>Description:</td>
+        <td tal:content="structure:formatted_description"></td>
+    </tr>
+</table>
+<div class="grid_2 clear">&nbsp;</div>
+</div>
+</metal:main>

@@ -1,0 +1,14 @@
+<metal:main use-macro="load: base.pt">
+<title metal:fill-slot="title">Create User - Wishlist</title>
+<h2 metal:fill-slot="page-header">Create User</h2>
+<div metal:fill-slot="content" class="container_12">
+    <div class="form-container">
+        <form action="${save_url}" method="post">
+            Name: <input type="text" name="name" value="${person.name}"/><br/>
+            Email: <input type="text" name="email" value="${person.email}"/><br/>
+            Password: <input type="password" name="password" value="${person.password}"/><br/>
+            <input type="submit" name="form.submitted" value="Create"/>
+        </form>
+    </div>
+</div>
+</metal:main>

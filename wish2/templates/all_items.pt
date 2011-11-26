@@ -1,0 +1,46 @@
+<metal:main use-macro="load: base.pt">
+<title metal:fill-slot="title">Everyone's Things - Wishlist</title>
+<h2 metal:fill-slot="page-header">Everyone's Things</h2>
+<div metal:fill-slot="content" class="container_12">
+<ul tal:condition="people">
+    <li tal:repeat="person people" class="person">
+        <div tal:condition="person.email != logged_in">
+        <span class="grid_8 name">${person.name}</span>
+        <span class="person-actions grid_4">
+            <a href="${request.route_url('list', id=person.id)}">
+                <img src="${request.static_url('wish2:static/script.png')}" alt="Items" title="All Items" />
+                Wishlist
+            </a>
+            <span style="display: inline-block; width: 10px;">&nbsp;</span>
+            <a href="${request.route_url('profile', id=person.id)}">
+                <img src="${request.static_url('wish2:static/user.png')}" alt="Profile" title="Profile" />
+                Profile
+            </a>
+        </span>
+        <div class="clear">&nbsp;</div>
+        <ul class="items row" tal:condition="person.items">
+          <li tal:repeat="item person.items" class="item container_12">
+            <div>
+            <span class="actions grid_1">
+              <a tal:condition="item.marked==0" href="${request.route_url('mark', id=item.id)}">
+                  <img src="${request.static_url('wish2:static/big_check_green.png')}" alt="Mark" title="Mark This Item" />
+              </a>
+              <a tal:condition="item.marked!=0 and item.multiple==True" href="${request.route_url('mark', id=item.id)}">
+                  <img src="${request.static_url('wish2:static/big_check_blue.png')}" alt="Mark Again" title="Mark This Item Again" />
+              </a>
+              <span tal:condition="item.marked!=0 and item.multiple==False">
+                  <img src="${request.static_url('wish2:static/big_knob_grey.png')}" alt="Marked" title="Item Already Marked" />
+              </span>
+            </span>
+            <span class="title grid_11">
+                <a href="${request.route_url('view', id=item.id)}">${item.title}</a>
+            </span>
+            <span class="clear">&nbsp;</span>
+            </div>
+          </li>
+        </ul>
+        </div>
+    </li>
+</ul>
+</div>
+</metal:main>

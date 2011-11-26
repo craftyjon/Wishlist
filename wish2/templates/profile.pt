@@ -1,0 +1,26 @@
+<metal:main use-macro="load: base.pt">
+<title metal:fill-slot="title">${person.name} - Wishlist</title>
+<h2 metal:fill-slot="page-header">${person.name}</h2>
+<div metal:fill-slot="content" class="container_12">
+<div tal:condition="person">
+    <div class="grid_2">&nbsp;</div>
+    <div class="grid_8">
+        <table>
+            <tr>
+                <td>Email:</td>
+                <td><a href="mailto:${person.email}">${person.email}</a></td>
+            </tr>
+            <tr tal:condition="person.birthday">
+                <td>Birthday:</td>
+                <td tal:replace="person.birthday">None</td>
+            </tr>
+            <tr tal:condition="person.items">
+                <td>Wishlist Items:</td>
+                <td><a href="${request.route_url('list', id=person.id)}">Click to view</a></td>
+            </tr>
+        </table>
+    </div>
+    <div class="grid_2 clear">&nbsp;</div>
+</div>
+</div>
+</metal:main>

@@ -1,0 +1,16 @@
+<metal:main use-macro="load: base.pt">
+<title metal:fill-slot="title">Edit Profile - Wishlist</title>
+<h2 metal:fill-slot="page-header">Edit Your Profile</h2>
+<div metal:fill-slot="content" class="container_12">
+    <div class="grid_12">
+        <h3>${person.name}</h3>
+    </div>
+    <div class="clear">&nbsp;</div>
+    <div class="form-container grid_12">
+        <form action="${save_url}" method="post">
+            Email: <input type="text" name="email" value="${person.email}"/><br/>
+            <input type="submit" name="form.submitted" value="Save"/>
+        </form>
+    </div>
+</div>
+</metal:main>

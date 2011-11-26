@@ -1,0 +1,240 @@
+/* style.css */
+
+/*
+* This project uses the Silk icon set
+* by Mark James
+* http://www.famfamfam.com/lab/icons/silk/
+*/
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+/* ============================== */
+/* ! Layout for desktop version   */
+/* ============================== */
+
+	body {
+		font-family: "Verdana", sans-serif;
+        color: #222;
+        font-size: 18px;
+        background-color: #efefcf;
+	}
+    
+    h1, h2, h3 {
+        color: #333;
+        letter-spacing: 1px;
+    }
+    
+    h1 {
+        font-size: 250%;
+        color: #333;
+        margin: 12px 0 0;
+    }
+    
+    h2 {
+        font-size: 200%;
+        padding: 24px 0 12px;
+    }
+    
+    h3 {
+        font-size: 150%;
+        padding: 12px 0 8px;
+    }
+    
+    a {
+        color: rgba(40,50,220,.9);
+        text-decoration: none;
+    }
+    
+    a:active {
+    
+    }
+    
+    a:hover {
+        border-bottom: 2px dotted rgba(40,50,220,.9);
+        text-shadow: 1px 1px 5px rgba(120,130,255,.5);
+    }
+    
+    input {
+        font-size: 110%;
+        padding: 5px;
+        border: 1px solid rgba(0,0,0,.8);
+        box-shadow: 1px 1px 1px rgba(0,0,0,.3);
+    }
+    
+    .message {
+        display: inline-block;
+        margin: 10px;
+        padding: 10px;
+        border-radius: 5px;
+        border: 1px solid rgba(0,0,0,.8);
+        background: rgba(255,255,200,.9);
+    }
+    
+    .footer p {
+        font-size: 90%;
+        margin: 12px 0;
+    }
+    
+    .controls {
+        line-height: 200%;
+        padding: 24px 0 12px;
+        text-align: right;
+    }
+    
+    .person-actions {
+        text-align: right;
+    }
+    
+    .controls span {
+        display: inline-block;
+        margin: 4px 8px;
+    }
+    
+    .item .actions a:hover {
+        border: 0;
+    }
+    
+    li.person>div {
+        padding: 10px;
+        border: 1px solid rgba(0,0,0,.5);
+        border-bottom: none;
+        background-color: rgba(255,255,200,.4);
+    }
+    
+    li.person:first-child>div{
+        border-top-left-radius: 15px;
+        border-top-right-radius: 15px;
+    }
+    
+    li.person:nth-child(even)>div {
+        background-color: rgba(25,25,220,.1);
+    }
+    
+    li.person:last-child>div {
+        border-bottom: 1px solid rgba(0,0,0,.5);
+        margin-bottom: 24px;
+        border-bottom-left-radius: 15px;
+        border-bottom-right-radius: 15px;
+    }
+    
+    .box {
+        border-radius: 15px;
+        padding: 8px 12px;
+        background-color: rgba(0,0,0,.1);
+    }
+    
+    .person-actions {
+        line-height: 200%;
+    }
+    
+    .name {
+        font-size: 150%;
+        padding: 4px 0 16px;
+    }
+    
+    .item {
+        margin: 0;
+        width: 100%;
+    }
+    
+    .item>div {
+        font-size: 120%;
+        background-color: rgba(0,0,0,.1);
+        line-height: 32px;
+        padding: 8px 0 4px;
+    }
+    
+    .item:nth-child(even)>div {
+        background-color: rgba(0,0,0,.2);
+    }
+    
+    .item:first-child>div {
+        border-top-left-radius: 8px;
+        border-top-right-radius: 8px;
+    }
+    
+    .item:last-child>div {
+        border-bottom-left-radius: 8px;
+        border-bottom-right-radius: 8px;
+    }
+    
+    table {
+        background-color: rgba(0,0,0,.15);
+        border-radius: 15px;
+    }
+    
+    td {
+        padding: 10px;
+        vertical-align: middle;
+    }
+    
+    td:first-child {
+        text-align: right;
+    }
+	
+    strong {
+        font-weight: bold;
+    }
+    
+    em {
+        font-style: italic;
+        font-size: 80%;
+    }
+    
+    p {
+        margin: 8px  0 12px;
+    }
+
+/* ============================= */
+/* ! Layout for mobile version   */
+/* ============================= */
+
+@media handheld, only screen and (max-width: 767px) {
+
+	body {
+		
+	}
+
+}

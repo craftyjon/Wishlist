@@ -1,0 +1,31 @@
+<metal:main use-macro="load: base.pt">
+<title metal:fill-slot="title">Edit Users - Wishlist</title>
+<h2 metal:fill-slot="page-header">Edit Users</h2>
+<div metal:fill-slot="content" class="container_12">
+<ul tal:condition="people">
+    <li tal:repeat="person people" class="person">
+        <div>
+        <span class="grid_7 name">
+        ${person.name}<br />
+        <span style="font-size: 60%;">
+        ${person.email} <br />
+        ${len(person.items)} items
+        </span>
+        </span>
+        <span class="person-actions grid_5">
+            <a href="${request.route_url('edit_user', id=person.id)}">
+                <img src="${request.static_url('wish2:static/user_edit.png')}" alt="Items" title="All Items" />
+                Edit/Delete User
+            </a><br />
+            <a href="${request.route_url('list', id=person.id)}">
+                <img src="${request.static_url('wish2:static/script.png')}" alt="Items" title="All Items" />
+                Wishlist
+            </a>
+            
+        </span>
+        <div class="clear">&nbsp;</div>
+        </div>
+    </li>
+</ul>
+</div>
+</metal:main>

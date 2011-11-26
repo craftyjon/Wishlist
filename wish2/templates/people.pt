@@ -1,0 +1,25 @@
+<metal:main use-macro="load: base.pt">
+<title metal:fill-slot="title">People - Wishlist</title>
+<h2 metal:fill-slot="page-header">People</h2>
+<div metal:fill-slot="content" class="container_12">
+<ul tal:condition="people">
+    <li tal:repeat="person people" class="person">
+        <div>
+        <span class="grid_8 name">${person.name}</span>
+        <span class="person-actions grid_4">
+            <a href="${request.route_url('list', id=person.id)}">
+                <img src="${request.static_url('wish2:static/script.png')}" alt="Items" title="All Items" />
+                All Items
+            </a>
+            <span style="display: inline-block; width: 10px;">&nbsp;</span>
+            <a href="${request.route_url('profile', id=person.id)}">
+                <img src="${request.static_url('wish2:static/user.png')}" alt="Profile" title="Profile" />
+                Profile
+            </a>
+        </span>
+        <div class="clear">&nbsp;</div>
+        </div>
+    </li>
+</ul>
+</div>
+</metal:main>

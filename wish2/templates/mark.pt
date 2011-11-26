@@ -1,0 +1,16 @@
+<metal:main use-macro="load: base.pt">
+<title metal:fill-slot="title">${item.title} - Wishlist</title>
+<h2 metal:fill-slot="page-header">Mark Item</h2>
+<div metal:fill-slot="content" class="container_12">
+<div class="grid_2">&nbsp;</div>
+<div class="grid_8 box">
+    <h3>Confirmation</h3>
+    <p>Do you want to mark <strong>${item.title}</strong> for ${item.owner.name}?</p>
+    <form action="${save_url}" method="post" style="margin: 20px;">
+        <input type="submit" name="form.submitted" value="   Yes   "/>
+    </form>
+    <p>Click "Back" or follow any other link to cancel.</p>
+</div>
+<div class="grid_2 clear">&nbsp;</div>
+</div>
+</metal:main>
