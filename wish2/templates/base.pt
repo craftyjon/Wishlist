@@ -46,6 +46,7 @@
     <div class="grid_12">
     <p>Wishlist v2.0 - 2011-11-24</p>
     <p>Bugs? Comments? <a href="mailto:jon@craftyjon.com">jon@craftyjon.com</a></p>
+    <p>This project is <a href="https://github.com/cdawzrd/Wishlist">open-source</a> and powered by <a href="http://www.pylonsproject.org/">Pyramid</a>.
     </div>
 </div>
 </body>
