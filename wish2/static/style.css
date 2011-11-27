@@ -263,11 +263,11 @@ table {
     
     tr {
         margin: 0 10px;
-        background: rgba(0,0,0,.1);
+        background: rgba(0,0,0,.075);
     }
     
     tr:nth-child(even) {
-        background: rgba(0,0,0,.2);
+        background: rgba(0,0,0,.15);
     }    
     
     td {
