@@ -122,8 +122,11 @@ def add(request):
         session = DBSession()
         title = request.params['title']
         description = request.params['description']
+        multiple = False
+        if 'multiple' in request.params and request.params['multiple']=="True":
+            multiple = True
         url = request.params['url'] or None
-        item = Item(title, description, url=url, owner_id=owner_id)
+        item = Item(title, description, url=url, owner_id=owner_id, multiple=multiple)
         session.add(item)
         return HTTPFound(location = request.route_url('my_list'))
     save_url = request.route_url('add')
@@ -140,6 +143,10 @@ def edit(request):
         else:
             item.title = request.params['title']
             item.url = request.params['url']
+            item.multiple = False
+            if 'multiple' in request.params and request.params['multiple']=="True":
+                print "Setting multiple to True"
+                item.multiple = True
             item.description = request.params['description']
             DBSession.add(item)
         return HTTPFound(location = request.route_url('my_list'))

@@ -8,19 +8,20 @@
         <td>Title:</td>
         <td>${item.title}</td>
     </tr>
-    <tr tal:condition="item.owner.email==logged_in">
+    <tr tal:condition="item.owner.id==logged_in">
         <td>&nbsp;</td>
         <td><a href="${request.route_url('edit',id=item.id)}">
         <img src="${request.static_url('wish2:static/pencil.png')}" title="Edit This Item" />
         Edit</a></td>
     </tr>
-    <tr tal:condition="item.owner.email!=logged_in">
+    <tr tal:condition="item.owner.id!=logged_in">
         <td>&nbsp;</td>
-        <td tal:condition="not item.marked"><a href="${request.route_url('mark',id=item.id)}">
+        <td tal:condition="(not item.marked) or item.multiple"><a href="${request.route_url('mark',id=item.id)}">
         <img src="${request.static_url('wish2:static/accept.png')}" title="Mark This Item" />
         Mark This Item</a>
+        <span tal:condition="item.multiple">Marked ${item.marked} times</span>
         </td>
-        <td tal:condition="item.marked">
+        <td tal:condition="item.marked and not item.multiple">
         <em>Item already marked</em>
         </td>
     </tr>

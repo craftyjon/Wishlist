@@ -13,6 +13,11 @@
             <tr>
                 <td>URL (optional):</td>
                 <td><input type="text" name="url" size="40" value="${item.url}"/></td>
+            </tr>
+            <tr>
+                <td>Allow Multiple:</td>
+                <td><input type="checkbox" name="multiple" id="cb_multiple" value="True" checked="${'checked' if item.multiple else ''}" /><label for="cb_multiple">I want more than one of this</label></td>
+            </tr>
             <tr>
                 <td>Description:</td>
                 <td><textarea name="description" rows="10" cols="60">${item.description}</textarea></td>
